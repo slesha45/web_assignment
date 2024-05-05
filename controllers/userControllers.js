@@ -17,7 +17,7 @@ const createUser = async (req, res) => {
         // res.status(400).json()
         return res.json({
             'sucess': false,
-            'message': 'Plz enter all details!'
+            'message': 'Please enter all details!'
         })
     }
 
