@@ -2,8 +2,6 @@ const appointmentModel = require('../models/appointmentModel');
 const { response } = require("express");
 const { checkout } = require("../routes/userRoutes");
 
-
-
 const bookAppointment = async (req, res) => {
 
     // Step 1. Check incoming data
@@ -21,14 +19,11 @@ const bookAppointment = async (req, res) => {
             'sucess': false,
             'message': 'Plz enter all details!'
         })
-
     }
 
     if (Time === '15:00') {
         return res.json({ success: false, message: 'The slot is unavailable.' });
     }
-
-
 
     // Step 4. Error Handling (Try Catch)
     try {
@@ -47,15 +42,11 @@ const bookAppointment = async (req, res) => {
 
         // Hashing/Encryption of the password
 
-
-
         // Step 5.2 if user is new:
         const newappointment = new appointmentModel({
             // Database Fields : Client's Value
             Date: Date,
             Time: Time,
-
-
         })
 
         // Save the database
@@ -66,12 +57,9 @@ const bookAppointment = async (req, res) => {
             'sucess': true,
             'message': 'Booking Confirmed'
         })
-
-
         // Step 5.2.1 Hash the password
         // Step 5,2,2 Save to the database 
         // 5.2.3 Send Sucessfull response
-
 
     } catch (error) {
         console.log(error)
@@ -79,12 +67,7 @@ const bookAppointment = async (req, res) => {
             'sucess': false,
             "message": 'Internal Server Error!'
         })
-
     }
-
-
-
-
 }
 
 
